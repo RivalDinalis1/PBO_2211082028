@@ -4,10 +4,7 @@
  */
 package Rival18032023;
 
-/**
- *
- * @author RIVAL DINALIS
- */
+import javax.swing.JOptionPane;
 public class Latihan633 {
     //latihan module 6 (6.5.3Cetak Seratus Kali) for loop
     public static void main(String[] args){
