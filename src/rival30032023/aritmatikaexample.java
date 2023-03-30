@@ -21,5 +21,12 @@ public class aritmatikaexample {
         for (int j = 0; j < bilanganGanjil.length; j++) {
         System.out.print(bilanganGanjil[j] + " ");
         }
+        System.out.println();
+        int[] bilanganPrima = arit.bilanganPrimaPertama();
+        System.out.println("Bilangan prima pertama: ");
+        for (int i = 0; i < bilanganPrima.length; i++) {
+            System.out.print(bilanganPrima[i] + " ");
+        }
+        System.out.println();
     }
 }

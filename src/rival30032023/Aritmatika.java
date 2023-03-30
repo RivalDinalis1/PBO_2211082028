@@ -29,4 +29,29 @@ public class Aritmatika {
         }
         return bilanganGanjil;
     }
+     public boolean cekPrima(int n) {
+        if (n <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public int[] bilanganPrimaPertama() {
+        int[] bilanganPrima = new int[5];
+        int i = 0;
+        int j = 2;
+        while (i < 5) {
+            if (cekPrima(j)) {
+                bilanganPrima[i] = j;
+                i++;
+            }
+            j++;
+        }
+        return bilanganPrima;
+    }
 }
