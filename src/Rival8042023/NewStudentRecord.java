@@ -8,6 +8,7 @@ import Rival8042023.StudentRecord;
 public class NewStudentRecord extends StudentRecord {
     //latihan 1
     private double CompGrade;
+    
     public NewStudentRecord(){
         super("ali","padang");
         System.out.println("inside NewStudentRecord constructor");
