@@ -9,7 +9,7 @@ package RIVAL15042023.model;
  * @author RIVAL DINALIS
  */
 public class Anggota {
-     private String nobp;
+    private String nobp;
     private String nama;
     private String alamat;
     

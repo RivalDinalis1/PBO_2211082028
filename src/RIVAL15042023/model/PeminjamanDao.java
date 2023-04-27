@@ -4,10 +4,16 @@
  */
 package RIVAL15042023.model;
 
+import java.util.List;
+
 /**
  *
  * @author RIVAL DINALIS
  */
-public class bukuDao {
-    
+public interface PeminjamanDao {
+    void save(Peminjaman  peminjaman);
+    void update(int index, Peminjaman peminjaman);
+    void delete(int index);
+    Peminjaman getPeminjaman (int index);
+    List<Peminjaman> getAll();
 }
