@@ -9,7 +9,7 @@ package RIVAL15042023.model;
  * @author RIVAL DINALIS
  */
 public class Peminjaman {
-    private String nobp;
+    private Anggota anggota;
     private String kodebuku;
     private String tglpinjam;
     private String tglkembali;
@@ -17,19 +17,19 @@ public class Peminjaman {
     public Peminjaman(){
     }
     
-    public Peminjaman(String nobp, String kodebuku, String tglpinjam, String tglkembali ){
-        this.nobp = nobp;
+    public Peminjaman(Anggota anggota, String kodebuku, String tglpinjam, String tglkembali ){
+        this.anggota = anggota;
         this.kodebuku = kodebuku;
         this.tglpinjam = tglpinjam;
         this.tglkembali = tglkembali;
     }
     
-    public String getNobp(){
-        return nobp;
+    public Anggota getanggota(){
+        return anggota;
     }
     
-    public void setNobp(String nobp){
-        this.nobp = nobp;
+    public void setAnggota(Anggota anggota){
+        this.anggota = anggota;
     }
     
     public String getkodebuku(){
