@@ -3,57 +3,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package RIVAL15042023.controller;
-import RIVAL15042023.view.*;
+import RIVAL15042023.view.FormPengembalian;
 import RIVAL15042023.model.*;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-
 /**
  *
  * @author RIVAL DINALIS
  */
-public class PeminjamanController {
-    protected FormPeminjaman formPeminjaman;
-    protected PeminjamanDao peminjamanDao;
-    protected Peminjaman peminjaman;
+public class PengembalianController {
+    private FormPengembalian formPengembalian;
+    private Pengembalian pengembalian;
+    private Peminjaman peminjaman;
+    private PengembalianDao pengembalianDao;
+    private PeminjamanDao peminjamanDao;
     
-    protected AnggotaDao anggotaDao;
-    protected BukuDao BukuDao;
-    
-    public PeminjamanController(FormPengembalian formPeminjaman){}
-    public PeminjamanController(FormPeminjaman formPeminjaman){
-        this.formPeminjaman = formPeminjaman;
+    public PengembalianController(FormPengembalian formPengembalian){
+        this.formPengembalian = formPengembalian;
+        pengembalianDao = new PengembalianDaoImpl();
         peminjamanDao = new PeminjamanDaoImpl();
-        anggotaDao = new AnggotaDaoImpl();
-        BukuDao = new BukuDaoImpl();
     }
     
-    public void bersihForm(){
-        
-        formPeminjaman.getTxttglpinjam().setText("");
-        formPeminjaman.getTxttglkembali().setText("");
-    }
-    
-    public void isiCombo(){
-    List<Anggota> listAnggota = anggotaDao.getAll();
-    formPeminjaman.getCboAnggota().removeAllItems();
-    List<Buku> listBuku = BukuDao.getAll();
-    formPeminjaman.getCboBuku().removeAllItems();
-
-    //isi anggota
-    for(Anggota anggota: listAnggota){
-        formPeminjaman.getCboAnggota().addItem(anggota.getNobp());
-    }
-    //isi buku
-    for(Buku buku: listBuku){
-        formPeminjaman.getCboBuku().addItem(buku.getkodebuku());
-    }
-}
-
-    
-    public void savePeminjaman(){
+    public void pinjam(){
         peminjaman = new Peminjaman();
-        peminjaman.setAnggota(anggotaDao.getAnggota(formPeminjaman.getCboAnggota().getSelectedIndex()));
+        peminjaman.setAnggota(anggotaDao.getAnggota(formPengembalian.getCboAnggota().getSelectedIndex()));
         peminjaman.setbuku(BukuDao.getBuku(formPeminjaman.getCboBuku().getSelectedIndex()));
         peminjaman.settglpinjam(formPeminjaman.getTxttglpinjam().getText());
         peminjaman.settglkembali(formPeminjaman.getTxttglkembali().getText());
@@ -74,6 +47,16 @@ public class PeminjamanController {
     }
     
     public void updatePeminjaman(){
+        int index = formPeminjaman.getTblPeminjaman().getSelectedRow();
+        peminjaman.setAnggota(anggotaDao.getAnggota(formPeminjaman.getCboAnggota().getSelectedIndex()));
+        peminjaman.setbuku(BukuDao.getBuku(formPeminjaman.getCboBuku().getSelectedIndex()));
+        peminjaman.settglpinjam(formPeminjaman.getTxttglpinjam().getText());
+        peminjaman.settglkembali(formPeminjaman.getTxttglkembali().getText());
+        peminjamanDao.update(index, peminjaman);
+        javax.swing.JOptionPane.showMessageDialog(formPeminjaman,
+                "Update Ok");
+    }
+    public void kembalikan(){
         int index = formPeminjaman.getTblPeminjaman().getSelectedRow();
         peminjaman.setAnggota(anggotaDao.getAnggota(formPeminjaman.getCboAnggota().getSelectedIndex()));
         peminjaman.setbuku(BukuDao.getBuku(formPeminjaman.getCboBuku().getSelectedIndex()));
@@ -106,4 +89,5 @@ public class PeminjamanController {
         tabelModel.addRow(data);
         }
     }
-}
+}    
+  

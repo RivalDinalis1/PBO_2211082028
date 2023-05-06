@@ -10,16 +10,16 @@ package RIVAL15042023.model;
  */
 public class Peminjaman {
     private Anggota anggota;
-    private String kodebuku;
+    private Buku buku;
     private String tglpinjam;
     private String tglkembali;
     
     public Peminjaman(){
     }
     
-    public Peminjaman(Anggota anggota, String kodebuku, String tglpinjam, String tglkembali ){
+    public Peminjaman(Anggota anggota, Buku buku, String tglpinjam, String tglkembali ){
         this.anggota = anggota;
-        this.kodebuku = kodebuku;
+        this.buku = buku;
         this.tglpinjam = tglpinjam;
         this.tglkembali = tglkembali;
     }
@@ -32,12 +32,12 @@ public class Peminjaman {
         this.anggota = anggota;
     }
     
-    public String getkodebuku(){
-        return kodebuku;
+    public Buku getbuku(){
+        return buku;
     }
     
-    public void setkodebuku(String kodebuku){
-        this.kodebuku = kodebuku;
+    public void setbuku(Buku buku){
+        this.buku = buku;
     }
     
     public String gettglpinjam(){

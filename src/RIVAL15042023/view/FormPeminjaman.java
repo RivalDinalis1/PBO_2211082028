@@ -26,8 +26,8 @@ public class FormPeminjaman extends javax.swing.JFrame {
         return CBoAnggota;
     }
     
-    public javax.swing.JTextField getTxtkodebuku(){
-        return txtkodebuku;
+    public javax.swing.JComboBox getCboBuku(){
+        return CboBuku;
     }
     
     public javax.swing.JTextField getTxttglpinjam(){
@@ -54,7 +54,6 @@ public class FormPeminjaman extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtkodebuku = new javax.swing.JTextField();
         txttglpinjam = new javax.swing.JTextField();
         txttglkembali = new javax.swing.JTextField();
         btnInsert = new javax.swing.JButton();
@@ -64,39 +63,21 @@ public class FormPeminjaman extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPeminjaman = new javax.swing.JTable();
         CBoAnggota = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
-        txtnama = new javax.swing.JTextField();
+        CboBuku = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
 
-        jLabel1.setText("nobp");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(10, 10, 30, 16);
+        jLabel1.setText("Anggota");
 
-        jLabel2.setText("kode buku");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(10, 70, 56, 16);
+        jLabel2.setText("Buku");
 
         jLabel3.setText("tgl pinjam");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(10, 110, 54, 16);
 
         jLabel4.setText("tgl kembali");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(10, 150, 59, 16);
-
-        txtkodebuku.setText("jTextField2");
-        getContentPane().add(txtkodebuku);
-        txtkodebuku.setBounds(110, 70, 259, 22);
 
         txttglpinjam.setText("jTextField3");
-        getContentPane().add(txttglpinjam);
-        txttglpinjam.setBounds(110, 110, 259, 22);
 
         txttglkembali.setText("jTextField4");
-        getContentPane().add(txttglkembali);
-        txttglkembali.setBounds(110, 140, 259, 22);
 
         btnInsert.setText("Insert");
         btnInsert.addActionListener(new java.awt.event.ActionListener() {
@@ -104,8 +85,6 @@ public class FormPeminjaman extends javax.swing.JFrame {
                 btnInsertActionPerformed(evt);
             }
         });
-        getContentPane().add(btnInsert);
-        btnInsert.setBounds(10, 190, 72, 23);
 
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -113,8 +92,6 @@ public class FormPeminjaman extends javax.swing.JFrame {
                 btnUpdateActionPerformed(evt);
             }
         });
-        getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(100, 190, 72, 23);
 
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -122,8 +99,6 @@ public class FormPeminjaman extends javax.swing.JFrame {
                 btnDeleteActionPerformed(evt);
             }
         });
-        getContentPane().add(btnDelete);
-        btnDelete.setBounds(180, 190, 72, 23);
 
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -131,8 +106,6 @@ public class FormPeminjaman extends javax.swing.JFrame {
                 btnCancelActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCancel);
-        btnCancel.setBounds(260, 190, 72, 23);
 
         tblPeminjaman.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -157,20 +130,78 @@ public class FormPeminjaman extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblPeminjaman);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(0, 220, 452, 402);
-
         CBoAnggota.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(CBoAnggota);
-        CBoAnggota.setBounds(116, 6, 259, 22);
 
-        jLabel5.setText("Nama");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(10, 40, 37, 16);
+        CboBuku.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        txtnama.setText("jTextField1");
-        getContentPane().add(txtnama);
-        txtnama.setBounds(110, 40, 270, 22);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnInsert)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnUpdate)
+                        .addGap(8, 8, 8)
+                        .addComponent(btnDelete)
+                        .addGap(8, 8, 8)
+                        .addComponent(btnCancel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(46, 46, 46)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(CBoAnggota, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(CboBuku, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txttglpinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txttglkembali, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel1))
+                    .addComponent(CBoAnggota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CboBuku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txttglpinjam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txttglkembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnInsert)
+                    .addComponent(btnUpdate)
+                    .addComponent(btnDelete)
+                    .addComponent(btnCancel))
+                .addGap(7, 7, 7)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         setSize(new java.awt.Dimension(644, 623));
         setLocationRelativeTo(null);
@@ -245,6 +276,7 @@ public class FormPeminjaman extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CBoAnggota;
+    private javax.swing.JComboBox<String> CboBuku;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnInsert;
@@ -253,11 +285,8 @@ public class FormPeminjaman extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblPeminjaman;
-    private javax.swing.JTextField txtkodebuku;
-    private javax.swing.JTextField txtnama;
     private javax.swing.JTextField txttglkembali;
     private javax.swing.JTextField txttglpinjam;
     // End of variables declaration//GEN-END:variables

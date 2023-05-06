@@ -13,8 +13,9 @@ public class PeminjamanDaoImpl implements PeminjamanDao {
     List<Peminjaman> data = new ArrayList<>();
     
     public PeminjamanDaoImpl() {
-        AnggotaDao daoAnggota= new AnggotaDaoImpl();
-        data.add(new Peminjaman(daoAnggota.getAnggota(0),"001","27-08-2022","29-08-2022"));
+        AnggotaDao AnggotaDao= new AnggotaDaoImpl();
+        BukuDao bukuDao= new BukuDaoImpl();
+        data.add(new Peminjaman(AnggotaDao.getAnggota(0),bukuDao.getBuku(1),"27-08-2022","29-08-2022"));
     }
     
     public void save(Peminjaman peminjaman){

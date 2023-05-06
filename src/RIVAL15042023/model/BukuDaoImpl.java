@@ -15,6 +15,7 @@ public class BukuDaoImpl implements BukuDao {
     
     public BukuDaoImpl() {
         data.add(new Buku("215230","Bumi","Tereliye","Andalas","2017"));
+        data.add(new Buku("215231","Bumi2","Tereliye","Andalas","2017"));
     }
     
     public void save(Buku buku){
