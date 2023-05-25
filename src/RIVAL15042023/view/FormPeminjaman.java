@@ -3,8 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package RIVAL15042023.view;
+
 import RIVAL15042023.controller.BukuController;
 import RIVAL15042023.controller.PengembalianController;
+
 /**
  *
  * @author HP
@@ -15,6 +17,7 @@ public class FormPeminjaman extends javax.swing.JFrame {
      * Creates new form FormPeminjaman
      */
     PengembalianController controller;
+
     public FormPeminjaman() {
         initComponents();
         controller = new PengembalianController(this);
@@ -22,30 +25,30 @@ public class FormPeminjaman extends javax.swing.JFrame {
         controller.isiCombo();
         controller.tampilData();
     }
-    public javax.swing.JComboBox getCboAnggota(){
+
+    public javax.swing.JComboBox getCboAnggota() {
         return cboAnggota;
     }
-    
-    public javax.swing.JComboBox getCboBuku(){
+
+    public javax.swing.JComboBox getCboBuku() {
         return cboBuku;
     }
-    
-    public javax.swing.JTextField getTxtTglpinjam(){
+
+    public javax.swing.JTextField getTxtTglpinjam() {
         return txttglPinjam;
     }
-    
-    public javax.swing.JTextField getTxtTglkembali(){
+
+    public javax.swing.JTextField getTxtTglkembali() {
         return txttglKembali;
     }
-    
-     public javax.swing.JTextField getTxtDikembalikan(){
+
+    public javax.swing.JTextField getTxtDikembalikan() {
         return txttglDikembalikan;
     }
-    
-    public javax.swing.JTable getTblPeminjaman(){
+
+    public javax.swing.JTable getTblPeminjaman() {
         return tblPengembalian;
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -268,7 +271,7 @@ public class FormPeminjaman extends javax.swing.JFrame {
         // TODO add your handling code here:
         controller.deletePeminjaman();
         controller.bersihForm();
-        controller.tampilData(); 
+        controller.tampilData();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void tblPengembalianMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPengembalianMouseClicked
@@ -281,22 +284,22 @@ public class FormPeminjaman extends javax.swing.JFrame {
         controller.savePeminjaman();
         controller.tampilData();
         controller.bersihForm();
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         controller.bersihForm();
-        
-        
+
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         controller.savePeminjaman();
         controller.bersihForm();
-        controller.tampilData(); 
-        
+        controller.tampilData();
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -304,7 +307,7 @@ public class FormPeminjaman extends javax.swing.JFrame {
         controller.savePengembalian();
         controller.bersihForm();
         controller.tampilData();
-      
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void cboAnggotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboAnggotaActionPerformed
@@ -374,4 +377,3 @@ public class FormPeminjaman extends javax.swing.JFrame {
     private javax.swing.JTextField txttglPinjam;
     // End of variables declaration//GEN-END:variables
 }
-
