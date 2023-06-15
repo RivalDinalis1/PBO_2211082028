@@ -10,11 +10,9 @@ import java.util.List;
  * @author RIVAL DINALIS
  */
 public interface AnggotaDao {
-    void insert (Anggota anggota) throws Exception;
-    
-    
-//    void update(int index, Anggota anggota);
-//    void delete(int index);
-//    Anggota getAnggota(int index);
-//    List<Anggota> getAll();
+   void insert (Anggota anggota) throws Exception;
+   void update(String index, Anggota anggota)throws Exception;
+   void delete(String index)throws Exception ;
+   Anggota getAnggota(String kodeanggota)throws Exception;
+   List<Anggota> getAll()throws Exception;
 }
