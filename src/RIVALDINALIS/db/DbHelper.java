@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 public class DbHelper {
     private static Connection connection;
     
-    public static Connection getConectoin() throws SQLException{
+    public static Connection getConnection() throws SQLException{
         if(connection==null){
             MysqlDataSource dataSource = new MysqlDataSource();
             dataSource.setURL("jdbc:mysql://localhost/pbo_2211082028");
@@ -29,7 +29,7 @@ public class DbHelper {
     }
     public static void main (String[] args){
         try{
-            connection = DbHelper.getConectoin();
+            connection = DbHelper.getConnection();
             AnggotaDao dao = new AnggotaDaoImpl(connection);
             Anggota angggota = new Anggota("A002", "ali", "Padang", "L");
             dao.insert(angggota);

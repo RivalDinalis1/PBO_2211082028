@@ -12,7 +12,7 @@ public class Anggota {
     private String kodeanggota;
     private String namaanggota;
     private String alamat;
-    private String jeniskelamin;;
+    private String jeniskelamin;
 
     public Anggota() {}
     public Anggota(String kodeanggota, String namaanggota, String alamat, String jeniskelamin) {

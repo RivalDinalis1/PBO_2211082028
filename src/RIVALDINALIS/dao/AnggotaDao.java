@@ -11,8 +11,8 @@ import java.util.List;
  */
 public interface AnggotaDao {
    void insert (Anggota anggota) throws Exception;
-   void update(String index, Anggota anggota)throws Exception;
-   void delete(String index)throws Exception ;
+   void update(Anggota anggota)throws Exception;
+   void delete(Anggota anggota)throws Exception ;
    Anggota getAnggota(String kodeanggota)throws Exception;
    List<Anggota> getAll()throws Exception;
 }
