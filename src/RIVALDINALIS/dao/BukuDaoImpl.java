@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author RIVAL DINALIS
  */
-public class BukuDaoImpl implements AnggotaDao{
+public class BukuDaoImpl implements BukuDao{
     private Connection connection;
     
     public BukuDaoImpl(Connection connection){
@@ -28,53 +28,65 @@ public class BukuDaoImpl implements AnggotaDao{
        ps.executeUpdate();
        ps.close();
     }
-    public void update (Anggota anggota) throws Exception{
-        String sql = "UPDATE anggota set namaanggota=?, alamat=?, jeniskelamin=? "
-                    +"WHERE kodeanggota=?";
+    public void update (Buku buku) throws Exception{
+        String sql = "UPDATE buku set judulbuku=?, pengarang=?, penerbit=? "
+                    +"WHERE kodebuku=?";
         PreparedStatement ps = connection.prepareStatement(sql);
-        ps.setString(1, anggota.getNamaanggota());
-        ps.setString(2, anggota.getAlamat());
-        ps.setString(3, anggota.getJeniskelamin());
-        ps.setString(4, anggota.getKodeanggota());
+        ps.setString(4, buku.getKodebuku());
+        ps.setString(1, buku.getJudulbuku());
+        ps.setString(2, buku.getPengarang());
+        ps.setString(3, buku.getPenerbit());
         ps.executeUpdate();
     }    
-    public void delete(Anggota anggota) throws Exception{
+    public void delete(Buku buku) throws Exception{
             
-        String sql = "DELETE FROM anggota WHERE kodeanggota =?";
+        String sql = "DELETE FROM buku WHERE kodebuku =?";
         PreparedStatement ps = connection.prepareStatement(sql);
-        ps.setString(1,anggota.getKodeanggota());
+        ps.setString(1,buku.getKodebuku());
         ps.executeUpdate();
     }
-    public Anggota  getAnggota(String kodeanggota) throws Exception{
-        String sql = "select * from anggota where kodeanggota =?";
+    public Buku getBuku(String kodebuku) throws Exception{
+        String sql = "select * from buku where kodebuku =?";
         PreparedStatement ps = connection.prepareStatement(sql);
-        ps.setString(1, kodeanggota);
+        ps.setString(1, kodebuku);
         ResultSet rs = ps.executeQuery();
-        Anggota anggota = null;
+        Buku buku = null;
         if(rs.next()){
-            anggota = new Anggota();
-            anggota.setKodeanggota(rs.getString(1));
-            anggota.setNamaanggota(rs.getString(2));
-            anggota.setAlamat(rs.getString(3));
-            anggota.setJeniskelamin(rs.getString(4));
+            buku = new Buku();
+            buku.setKodebuku(rs.getString(1));
+            buku.setJudulbuku(rs.getString(2));
+            buku.setPengarang(rs.getString(3));
+            buku.setPenerbit(rs.getString(4));
         }
-        return anggota;
+        return buku;
     } 
     
-    public List<Anggota> getAll()throws Exception {
-        String sql = "SELECT * FROM anggota";
+//    public List<Buku> getAl() throws Exception{
+//        String sql = "Select * from Buku";
+//        PreparedStatement ps = connection.prepareStatement(sql);
+//        ResultSet rs = ps.executeQuery();
+//        Buku buku;
+//        List<Buku> list = new ArrayList<>();
+//        while(rs.next()){
+//            buku = new Buku();
+//            buku.setKodebuku(sql);
+//        }
+//        return list;
+//    }
+   public List<Buku> getAll()throws Exception {
+        String sql = "SELECT * FROM buku";
         PreparedStatement ps = connection.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
-        Anggota anggota; 
-        List <Anggota> list = new ArrayList<>();
+        Buku buku; 
+        List <Buku> list = new ArrayList<>();
         while(rs.next()){
-            anggota = new Anggota();
-            anggota.setKodeanggota(rs.getString(1));
-            anggota.setNamaanggota(rs.getString(2));
-            anggota.setAlamat(rs.getString(3));
-            anggota.setJeniskelamin(rs.getString(4));
-            list.add(anggota);
+            buku = new Buku();
+            buku.setKodebuku(rs.getString(1));
+            buku.setJudulbuku(rs.getString(2));
+            buku.setPengarang(rs.getString(3));
+            buku.setPenerbit(rs.getString(4));
+            list.add(buku);
         }
         return list;
-    }
+    }  
 }

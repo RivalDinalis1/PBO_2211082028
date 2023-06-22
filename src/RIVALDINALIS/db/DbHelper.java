@@ -27,16 +27,5 @@ public class DbHelper {
         }
         return connection;
     }
-    public static void main (String[] args){
-        try{
-            connection = DbHelper.getConnection();
-            AnggotaDao dao = new AnggotaDaoImpl(connection);
-            Anggota angggota = new Anggota("A002", "ali", "Padang", "L");
-            dao.insert(angggota);
-            
-            JOptionPane.showMessageDialog(null,"koneksi ok");
-        }catch (Exception ex){
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-    } 
+    
 }
