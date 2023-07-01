@@ -118,9 +118,12 @@ public class PeminjamanControler {
     
     public void getpeminjaman(){
         try {
-            String kodeanggota =form.getTblpinjam().getValueAt(form.getTblpinjam().getSelectedRow(),0).toString();
-            String kodebuku =form.getTblpinjam().getValueAt(form.getTblpinjam().getSelectedRow(),2).toString();
-            String tglpinjam =form.getTblpinjam().getValueAt(form.getTblpinjam().getSelectedRow(),4).toString();
+            String kodeanggota =form.getTblpinjam()
+                    .getValueAt(form.getTblpinjam().getSelectedRow(),0).toString();
+            String kodebuku =form.getTblpinjam()
+                    .getValueAt(form.getTblpinjam().getSelectedRow(),2).toString();
+            String tglpinjam =form.getTblpinjam()
+                    .getValueAt(form.getTblpinjam().getSelectedRow(),4).toString();
             
             p = pdao.getPeminjaman(kodeanggota, kodebuku, tglpinjam);
             Anggota a= adao.getAnggota(p.getA().getKodeanggota());

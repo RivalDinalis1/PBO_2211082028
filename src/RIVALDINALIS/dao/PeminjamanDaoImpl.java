@@ -20,7 +20,7 @@ public class PeminjamanDaoImpl implements PeminjamanDao{
         this.con = con;
         
     }
-     public void insert (Peminjaman p) throws Exception{
+    public void insert (Peminjaman p) throws Exception{
        String sql = "insert into Peminjaman values(?,?,?,?)";
        PreparedStatement ps = con.prepareStatement(sql);
        ps.setString(1,p.getA().getKodeanggota());
