@@ -4,10 +4,16 @@
  */
 package RIVALDINALIS.view;
 
-import RIVALDINALIS.controler.ControlerPengembalian;
-import RIVALDINALIS.dao.PeminjamanDao;
+import RIVAL15042023.model.Pengembalian;
+import RIVALDINALIS.controler.PengembalianControler;
+import RIVALDINALIS.dao.PengembalianDao;
+import RIVALDINALIS.dao.PengembalianDaoImpl;
+import java.sql.Connection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -15,63 +21,62 @@ import javax.swing.JTextField;
  *
  * @author RIVAL DINALIS
  */
-
 public class FormPengembalian extends javax.swing.JFrame {
-
+    private PengembalianControler ctrl;
+    private Connection cn;
+    private PengembalianDao dao;
     /**
      * Creates new form FormPengembalian
      */
-    ControlerPengembalian con;
-    public FormPengembalian() {
+    public FormPengembalian() throws Exception {
         initComponents();
-        con = new ControlerPengembalian(this);
-        con.bersihform();
-        con.isicomboanggota();
-        con.isicombobuku();
-        con.tampil();
-        
+        dao = new PengembalianDaoImpl(cn);
+        ctrl = new PengembalianControler(this);
+        ctrl.Clear();
+        ctrl.Showdata();
     }
 
-    public JButton getBtncancel() {
-        return btncancel;
+    public JComboBox<String> getCboKodeAgg() {
+        return CboKodeAgg;
     }
 
-    public JButton getBtndelete() {
-        return btndelete;
+    public JComboBox<String> getCboKodeBuku() {
+        return CboKodeBuku;
     }
 
-    public JButton getBtninsert() {
-        return btninsert;
+    public JTable getTblPengembalian() {
+        return TblPengembalian;
     }
 
-
-    public JButton getBtnupdate() {
-        return btnupdate;
+    public JTextField getTxtCari() {
+        return TxtCari;
     }
 
-    public JComboBox<String> getCbokodeanggota() {
-        return cbokodeanggota;
+    public JTextField getTxtDenda() {
+        return TxtDenda;
     }
 
-    public JComboBox<String> getCbokodebuku() {
-        return cbokodebuku;
+    public JTextField getTxtTanggalDikembalikan() {
+        return TxtTanggalDikembalikan;
     }
 
-    public JTable getTblpengembalian() {
-        return tblpengembalian;
+    public JTextField getTxtTanggalPinjam() {
+        return TxtTanggalPinjam;
     }
 
-    public JTextField getTxttanggalDikembalikan() {
-        return txttanggalDikembalikan;
+    public JTextField getTxtTerlambat() {
+        return TxtTerlambat;
     }
 
-    public JTextField getTxttglkembali() {
-        return txttglkembali;
+    public JButton getBtnKembalikan() {
+        return BtnKembalikan;
     }
 
-    public JTextField getTxttglpinjam() {
-        return txttglpinjam;
+    public JComboBox<String> getCbocari() {
+        return cbocari;
     }
+    
+   
     
 
     /**
@@ -83,124 +88,277 @@ public class FormPengembalian extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jRadioButton1 = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txttglpinjam = new javax.swing.JTextField();
-        txttglkembali = new javax.swing.JTextField();
-        btninsert = new javax.swing.JButton();
-        btnupdate = new javax.swing.JButton();
-        btndelete = new javax.swing.JButton();
-        btncancel = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        txttanggalDikembalikan = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblpengembalian = new javax.swing.JTable();
-        cbokodeanggota = new javax.swing.JComboBox<>();
-        cbokodebuku = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-
-        jRadioButton1.setText("jRadioButton1");
+        CboKodeAgg = new javax.swing.JComboBox<>();
+        CboKodeBuku = new javax.swing.JComboBox<>();
+        TxtTanggalPinjam = new javax.swing.JTextField();
+        TxtTanggalDikembalikan = new javax.swing.JTextField();
+        TxtTerlambat = new javax.swing.JTextField();
+        TxtDenda = new javax.swing.JTextField();
+        BtnKembalikan = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        btncari = new javax.swing.JButton();
+        cbocari = new javax.swing.JComboBox<>();
+        TxtCari = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TblPengembalian = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
 
         jLabel1.setText("Kode Anggota");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(20, 9, 117, 16);
 
         jLabel2.setText("Kode Buku");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(20, 49, 117, 16);
 
         jLabel3.setText("Tanggal Pinjam");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(20, 89, 117, 16);
 
-        jLabel4.setText("Tanggal Kembali");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(20, 129, 117, 16);
-
-        txttglpinjam.setText("jTextField3");
-        getContentPane().add(txttglpinjam);
-        txttglpinjam.setBounds(141, 86, 390, 22);
-
-        txttglkembali.setText("jTextField4");
-        getContentPane().add(txttglkembali);
-        txttglkembali.setBounds(140, 130, 390, 22);
-
-        btninsert.setText("Insert");
-        getContentPane().add(btninsert);
-        btninsert.setBounds(20, 239, 72, 23);
-
-        btnupdate.setText("Update");
-        getContentPane().add(btnupdate);
-        btnupdate.setBounds(154, 239, 72, 23);
-
-        btndelete.setText("Delete");
-        getContentPane().add(btndelete);
-        btndelete.setBounds(300, 240, 72, 23);
-
-        btncancel.setText("Cancel");
-        getContentPane().add(btncancel);
-        btncancel.setBounds(460, 230, 72, 23);
+        jLabel4.setText("Tanggal Dikembalikan");
 
         jLabel5.setText("Terlambat");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(20, 170, 80, 16);
 
-        txttanggalDikembalikan.setText("jTextField5");
-        getContentPane().add(txttanggalDikembalikan);
-        txttanggalDikembalikan.setBounds(140, 170, 390, 22);
+        jLabel6.setText("Denda");
 
-        tblpengembalian.setModel(new javax.swing.table.DefaultTableModel(
+        CboKodeAgg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        CboKodeBuku.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        TxtTanggalPinjam.setText("jTextField1");
+
+        TxtTanggalDikembalikan.setText("jTextField2");
+        TxtTanggalDikembalikan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TxtTanggalDikembalikanKeyReleased(evt);
+            }
+        });
+
+        TxtTerlambat.setText("jTextField3");
+
+        TxtDenda.setText("jTextField4");
+
+        BtnKembalikan.setText("Kembalikan");
+        BtnKembalikan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKembalikanActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Update");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Delete");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Cancel");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("Pinjam");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        btncari.setText("Cari");
+        btncari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncariActionPerformed(evt);
+            }
+        });
+
+        cbocari.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kode Anggota", "Kode Buku", "Nama" }));
+
+        TxtCari.setText("jTextField5");
+
+        TblPengembalian.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Kode Anggota", "NamaAnggota", "Kode Buku", "Judul Buku", "Tanggal pinjam", "Tanggal Kembali", "Tanggal Dikembalikan", "Terlambat", "Denda"
+                "Kode Anggota", "Nama Anggota", "Kode Buku", "Judul Buku", "Tanggal Pinjam", "Tanggal Kembali", "Tanggal Dikembalikan", "Terlambat", "Denda"
             }
-        ));
-        jScrollPane1.setViewportView(tblpengembalian);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 280, 1163, 481);
-
-        cbokodeanggota.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(cbokodeanggota);
-        cbokodeanggota.setBounds(146, 6, 388, 22);
-
-        cbokodebuku.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(cbokodebuku);
-        cbokodebuku.setBounds(146, 46, 388, 22);
-
-        jLabel6.setText("Denda");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(20, 200, 80, 16);
-
-        jTextField1.setText("jTextField1");
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(140, 200, 390, 22);
-
-        jButton1.setText("Exit");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(580, 230, 72, 23);
+        TblPengembalian.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TblPengembalianMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(TblPengembalian);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 995, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6))
+                                .addGap(33, 33, 33)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(CboKodeBuku, javax.swing.GroupLayout.Alignment.LEADING, 0, 121, Short.MAX_VALUE)
+                                            .addComponent(CboKodeAgg, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(454, 454, 454)
+                                        .addComponent(cbocari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(TxtCari, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btncari))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(TxtDenda, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(TxtTerlambat, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(TxtTanggalDikembalikan, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(TxtTanggalPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(BtnKembalikan)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton3)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton4)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton5)))
+                        .addGap(19, 19, 19))))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(btncari)
+                            .addComponent(cbocari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TxtCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(CboKodeAgg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(CboKodeBuku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(TxtTanggalPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(TxtTanggalDikembalikan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(TxtTerlambat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(TxtDenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnKembalikan)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4)
+                    .addComponent(jButton5))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ctrl.Ubah();
+        ctrl.Clear();
+        ctrl.Showdata();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void BtnKembalikanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKembalikanActionPerformed
+        ctrl.insert();
+        ctrl.Clear();
+        ctrl.Showdata();
+    }//GEN-LAST:event_BtnKembalikanActionPerformed
+
+    private void TblPengembalianMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblPengembalianMouseClicked
+        ctrl.getPengemballian();
+    }//GEN-LAST:event_TblPengembalianMouseClicked
+
+    private void TxtTanggalDikembalikanKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtTanggalDikembalikanKeyReleased
+        try {
+            ctrl.tanggalDikembalikan();
+        } catch (Exception ex) {
+            Logger.getLogger(FormPengembalian.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_TxtTanggalDikembalikanKeyReleased
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        ctrl.delete();
+        ctrl.Clear();
+        ctrl.Showdata();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        ctrl.Clear();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        int i = JOptionPane.showConfirmDialog(rootPane, "Ingin melakukan Peminjaman?", "Konfirm",JOptionPane.YES_NO_OPTION);
+        if(i==0){
+            try {
+                Formpeminjaman pg = new Formpeminjaman();
+                pg.setVisible(true);
+                this.dispose();
+            } catch (Exception e) {
+            }
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void btncariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncariActionPerformed
+        ctrl.Cari();
+    }//GEN-LAST:event_btncariActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,31 +390,37 @@ public class FormPengembalian extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormPengembalian().setVisible(true);
+                try {
+                    new FormPengembalian().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(FormPengembalian.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btncancel;
-    private javax.swing.JButton btndelete;
-    private javax.swing.JButton btninsert;
-    private javax.swing.JButton btnupdate;
-    private javax.swing.JComboBox<String> cbokodeanggota;
-    private javax.swing.JComboBox<String> cbokodebuku;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton BtnKembalikan;
+    private javax.swing.JComboBox<String> CboKodeAgg;
+    private javax.swing.JComboBox<String> CboKodeBuku;
+    private javax.swing.JTable TblPengembalian;
+    private javax.swing.JTextField TxtCari;
+    private javax.swing.JTextField TxtDenda;
+    private javax.swing.JTextField TxtTanggalDikembalikan;
+    private javax.swing.JTextField TxtTanggalPinjam;
+    private javax.swing.JTextField TxtTerlambat;
+    private javax.swing.JButton btncari;
+    private javax.swing.JComboBox<String> cbocari;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTable tblpengembalian;
-    private javax.swing.JTextField txttanggalDikembalikan;
-    private javax.swing.JTextField txttglkembali;
-    private javax.swing.JTextField txttglpinjam;
     // End of variables declaration//GEN-END:variables
 }
